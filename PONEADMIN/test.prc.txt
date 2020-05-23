@@ -1,0 +1,14 @@
+DECLARE
+   Last_name    VARCHAR2(10);
+   Cursor       c1 IS SELECT last_name 
+                       FROM employees
+                       WHERE department_id = 20;
+BEGIN
+   OPEN c1;
+   LOOP
+      FETCH c1 INTO Last_name;
+      EXIT WHEN c1%NOTFOUND;
+      DBMS_OUTPUT.PUT_LINE(Last_name);
+   END LOOP;
+END;
+/
